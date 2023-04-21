@@ -1,10 +1,13 @@
-import React from "react";
 import "./Product.css";
 import { useStateValue } from "./StateProvider";
+import React, { useContext } from "react"
+
 
 function Product({id, title, image, price, rating}) {
 
-    const [state, dispatch] = useStateValue(); // dispatch is alias for action
+
+    const dispatch= useStateValue(); // dispatch is alias for action
+
 
     const addToBasket = () => {
         dispatch({
@@ -18,6 +21,8 @@ function Product({id, title, image, price, rating}) {
         });
     };
 
+
+      
     return (
         <div>
             <div className="product">
@@ -31,7 +36,7 @@ function Product({id, title, image, price, rating}) {
                         {Array(rating)
                         .fill()
                         .map((_, i) => (
-                            <p>⭐</p>
+                            <p key={i}>⭐</p>
                         )
                         )}
                     </div>    
